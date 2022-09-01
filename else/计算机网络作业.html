@@ -1,0 +1,784 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+
+/* ============================================
+ * ============ TYPORA lATEX THEME ============
+ * ============================================
+ * This project is based on the work of yfzhao20 and du33169,
+   whose repositories are addressed on
+   <https://github.com/yfzhao20/Typora-markdown> and
+   <https://github.com/du33169/typora-theme-essay_cn>,
+   many thanks to them.
+ * Typora LaTeX Theme (Markdown LaTeX Theme)
+   is a CSS theme mainly used as a component of Typora,
+   which is designed for Chinese university students
+   used in LaTeX-styled essays and reports.
+ * Copyright (C) 2021 Keldos;
+ * Repository Address: <https://github.com/Keldos-Li/typora-latex-theme>;
+ * Licensed Under GPL v3.0, SEE <https://github.com/Keldos-Li/typora-latex-theme/blob/main/LICENSE>
+ */
+/* As a special exception, you may create a larger work
+   that contains part or all of the Typora LaTeX Theme
+   and distribute that work under terms of your choice,
+   so long as that work isn't itself a CSS theme
+   or can be processed into CSS theme by using some
+   CSS pre-processors like SASS. Alternatively, if you
+   modify or redistribute this CSS theme itself,
+   you may (at your option) remove this special exception,
+   which will cause the CSS theme and the resulting output files
+   to be licensed under the GNU General Public License
+   without this special exception.
+ */
+:root {
+  /* == 字体设置 == */
+  /* 基准字体 */
+  /* 备选：Times, "Times New Roman" */
+  --base-Latin-font: "Latin Modern Roman", "Latin Modern Roman 10";
+  --base-Chinese-font: "宋体-简", "华文宋体", "Noto Serif CJK SC";
+  --base-font-size: 12pt;
+  /* 引言字体 */
+  --quote-font: "Latin Modern Roman", "Latin Modern Roman 10", Times,
+    "Times New Roman", "华文仿宋";
+  /* 这里字体用了10pt,比正文字体稍大 */
+  --quote-font-size: 11pt;
+  /* 代码字体（代码中的中文会调用 ui-font） */
+  --code-font: "Latin Modern Mono", "Latin Modern Mono 10", "Courier New";
+  /* 侧边栏字体 */
+  --ui-font: "阿里巴巴普惠体 2.0", "微软雅黑";
+  /* source mode 字体 */
+  /* 默认调用 code-font 和 ui-font */
+  --sourceMode-font: "SF Mono", "阿里巴巴普惠体 2.0", "微软雅黑";
+  /* 目录字体 */
+  /* 默认调用 base-font */
+  --toc-font: "";
+  /* 默认调用 base-font-size */
+  --toc-font-size: "";
+  /* 表格字体 */
+  /* 默认调用 heading-font */
+  --table-title-font: "";
+  /* 默认调用 base-font */
+  --table-font: "";
+  /* 标题字体（总设置） */
+  --heading-Latin-font: var(--base-Latin-font);
+  --heading-Chinese-font: "华文黑体";
+  /* 标题字体分别设置 */
+  /* 大标题（h1）字体 */
+  --title-Chinese-font: "华文黑体";
+  --title-font-size: 18pt;
+  /* h2字体 */
+  --h2-Chinese-font: "华文黑体";
+  --h2-font-size: 16pt;
+  /* h3字体 */
+  --h3-Chinese-font: "华文黑体";
+  --h3-font-size: 15pt;
+  /* h4字体 */
+  --h4-Chinese-font: "华文楷体";
+  --h4-font-size: 14pt;
+  /* h5字体 */
+  --h5-Chinese-font: "华文仿宋";
+  --h5-font-size: 13pt;
+  /* h6字体 */
+  --h6-Chinese-font: "华文仿宋";
+  --h6-font-size: 12pt;
+  /* 粗体样式设置 */
+  /* 加粗风格时使用的字重；400等同于 normal，700等同于 bold，900等同于 heavy */
+  --strong-weight: 900;
+  /* 基础行距 */
+  --base-line-height: 16pt;
+  /* == 页面设置 == */
+  /* 打印页边距 */
+  --set-margin: 1.8cm 2cm 1.2cm 2cm !important;
+  /* == 控制设置 == */
+  /* 目录中是否显示一级标题 */
+  --toc-show-title: none;
+  /* == 颜色设置 == */
+  /* 超链接颜色 */
+  --link-color-light: #2E67D3;
+  --link-color-dark: #8bb1f9;
+}
+
+/* ========== VERY IMPORTANT 请注意看下面的几行: ================
+   如果您需要在输出PDF时隐藏超链接的颜色和下划线，请取消注释下面的代码块，即删去下面的 Ln.1 和 Ln.2
+   如果您需要在输出PDF时保持超链接的显示效果，则不用更改 ============= */
+/* 如要取消注释代码，请把本行删去 Ln.1
+
+@media print {
+  #write a {
+    color: inherit !important;
+    text-decoration: none;
+  } 
+}
+
+如要取消注释代码，请把本行删去 Ln.2 */
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: var(--base-line-height);
+  /* counter-reset: tableHead 0 imgHead 0; */
+}
+
+strong {
+  font-weight: var(--strong-weight);
+}
+
+@media screen {
+  #write {
+    padding: var(--set-margin);
+    /* 添加一个淡蓝色的边框 */
+    /* border: 0.8px solid #AAC ; */
+    /* 页边阴影 */
+    box-shadow: 0 0 24px 12px #cccccc;
+  }
+}
+@media print {
+  #write {
+    padding: 0 !important;
+  }
+
+  @page {
+    margin: 1.8cm 2cm 1.2cm 2cm !important;
+    /* 页边距 */
+  }
+}
+/* 正文区基本属性 */
+#write {
+  font-family: var(--base-Latin-font), var(--base-Chinese-font), serif;
+  font-size: var(--base-font-size);
+  /* A4标准宽度 */
+  max-width: 21cm;
+  background-color: white;
+  /* column-count: 2;
+    column-gap: 25px;
+    column-width: 8cm; 
+    display: inline-block; */
+  /* 这里可以试分栏的，但确实不适合实现 */
+  counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0;
+}
+#write p {
+  text-align: left;
+}
+#write a {
+  color: var(--link-color-light);
+}
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+  font-weight: bold;
+  /* 标题字体 */
+  font-family: var(--heading-Latin-font), var(--heading-Chinese-font), sans-serif;
+  page-break-after: avoid !important;
+}
+#write h1 {
+  font-family: var(--heading-Latin-font), var(--title-Chinese-font), sans-serif;
+  text-align: center;
+  column-span: all;
+  font-size: var(--title-font-size);
+}
+#write h2 {
+  font-family: var(--heading-Latin-font), var(--h2-Chinese-font), sans-serif;
+  font-size: var(--h2-font-size);
+}
+#write h3 {
+  font-family: var(--heading-Latin-font), var(--h3-Chinese-font), sans-serif;
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-font-size);
+}
+#write h4 {
+  font-family: var(--heading-Latin-font), var(--h4-Chinese-font), sans-serif;
+  font-size: var(--h4-font-size);
+  line-height: var(--h4-font-size);
+}
+#write h5 {
+  font-family: var(--heading-Latin-font), var(--h5-Chinese-font), sans-serif;
+  font-size: var(--h5-font-size);
+  line-height: var(--h5-font-size);
+}
+#write h6 {
+  font-family: var(--heading-Latin-font), var(--h6-Chinese-font), sans-serif;
+  font-size: var(--h6-font-size);
+  /* 没有写错，为了避免行距太小才这么写 */
+  line-height: var(--h5-font-size);
+}
+#write table {
+  /* 三线表第一条线宽度 */
+  border-top: 1.2pt solid;
+  /* 三线表第二条线宽度 */
+  border-bottom: 1.2pt solid;
+  font-family: var(--table-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
+  /* font-size: var(--base-font-size); */
+  text-align: center;
+  page-break-inside: avoid;
+  border-spacing: 6px;
+  /* 自动布局表格宽度，如果有时内容太紧建议直接加空格吧，我自己看不惯和页面等宽的大表格 */
+  width: auto;
+  /* 使表格默认居中；虽然这个代码不好，但好像没别的实现办法 */
+  margin: 0 auto;
+}
+#write table td {
+  padding: 2px;
+}
+#write table tr {
+  padding: 2px;
+}
+#write th {
+  padding: 0px 6px;
+}
+#write thead {
+  /* 表格标题（首行）样式 */
+  /* 三线表表头的线 */
+  border-bottom: 0.5pt solid;
+  font-family: var(--table-title-font), var(--heading-Latin-font), var(--heading-Chinese-font), serif !important;
+  /* font-size: var(--base-font-size); */
+  font-weight: var(--strong-weight);
+}
+#write .CodeMirror-wrap {
+  padding: 10px;
+}
+#write .CodeMirror-code pre {
+  font-family: var(--code-font), var(--ui-font), monospace;
+}
+#write h1 {
+  counter-reset: h2;
+}
+#write h2 {
+  counter-reset: h3;
+}
+#write h3 {
+  counter-reset: h4;
+}
+#write h4 {
+  counter-reset: h5;
+}
+#write h5 {
+  counter-reset: h6;
+}
+
+/*
+#write figure:after{
+  counter-increment: tableHead;
+  content: "表" counter(tableHead) " ";
+  text-align:center;
+  width:100%;
+  display:inline-block;
+}*/
+/* 图片，导出PDF时暂时无法显示 */
+/*
+#write .md-image:after{
+  counter-increment: imgHead;
+  content: "图" counter(imgHead) " ";
+  text-align:center;
+  width:100%;
+  display:inline-block;
+}
+*/
+/* basic 样式采用一般的引言，具有左边框、左缩进 */
+blockquote {
+  font-style: normal;
+  font-family: var(--quote-font), var(--base-Latin-font), var(--base-Chinese-font), -apple-system, serif;
+  font-size: var(--quote-font-size);
+  /* 文字离左边框的距离 */
+  padding-left: 16px;
+  padding-right: 20pt;
+  /* 左边框离页面边的距离 */
+  margin-left: 20px;
+}
+
+hr {
+  border-top: solid 0.7px #eee;
+}
+
+img {
+  /* 避免图片在导出时被断开 */
+  page-break-inside: avoid;
+}
+
+/* ============ 多级列表样式 ============ */
+ul {
+  /* 无序列表第一级：实心圆点 */
+  list-style: disc;
+}
+ul ul {
+  /*list-style: circle;*/
+  /* 请勿删除“–”后的空格, 他们对缩进有一定影响, 下同 */
+  list-style: "–　 ";
+  /*left: -0.8rem;*/
+}
+ul ul ul {
+  /* 无序列表第三极：小圈 */
+  list-style: "◦　";
+  left: 0.1rem;
+}
+
+ol {
+  /* 有序列表第一级：数字 */
+  list-style: decimal;
+}
+ol ol {
+  counter-reset: liist;
+  list-style: none;
+}
+ol ol li {
+  counter-increment: liist;
+  position: relative;
+}
+ol ol li::before {
+  /* 有序列表第二级：括号加小写字母 */
+  content: "(" counter(liist,decimal) ")　　";
+  position: absolute;
+  margin-right: 2rem;
+  left: -2.4rem;
+}
+ol ol ol {
+  counter-reset: liiist;
+  list-style: none;
+  margin: 0;
+}
+ol ol ol li {
+  counter-increment: liiist;
+  position: relative;
+}
+ol ol ol li::before {
+  /* 有序列表第三级：小写罗马数字 */
+  content: counter(liiist,lower-roman) ".　　";
+  align-self: flex-end;
+  position: absolute;
+  left: -3rem;
+  /* -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;*/
+  /* 为了让项目编号是重新用句点对齐而不是左对齐 */
+  width: 4.2rem;
+  text-align: right;
+}
+
+li {
+  position: relative;
+}
+
+/* ============ 多级列表样式END ============ */
+/* 行内代码 */
+code {
+  font-family: var(--code-font), var(--ui-font), monospace;
+}
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
+p code,
+li code {
+  color: #3c70c6;
+  background-color: #fefefe;
+  /* 阴影 */
+  box-shadow: 0 0 1px 1px #c8d3df;
+  font-family: var(--code-font), var(--ui-font), monospace;
+  box-sizing: border-box;
+  border-right: 0px;
+  margin: 0 2px 0 2px;
+  padding: 0 2px 0 2px;
+  /* 圆角 */
+  border-radius: 2px 2px 2px 2px;
+}
+
+/* typora 编写模式 */
+#typora-source {
+  font-family: var(--sourceMode-font), var(--code-font), var(--ui-font), monospace;
+  line-height: 2rem;
+}
+
+#write h2:before {
+  counter-increment: h2;
+  content: counter(h2);
+  margin-right: 2rem;
+}
+
+#write h3:before, h3.md-focus.md-heading:before {
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3);
+  margin-right: 2rem;
+}
+
+#write h4:before, h4.md-focus.md-heading:before {
+  counter-increment: h4;
+  content: counter(h2) "." counter(h3) "." counter(h4);
+  margin-right: 2rem;
+}
+
+#write h5:before, h5.md-focus.md-heading:before {
+  counter-increment: h5;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5);
+  margin-right: 2rem;
+}
+
+#write h6:before, h6.md-focus.md-heading:before {
+  counter-increment: h6;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6);
+  margin-right: 2rem;
+}
+
+.footnotes-area .footnote-line {
+  color: var(--text-color);
+  font-size: var(--base-font-size);
+}
+.footnotes-area hr {
+  border: 0;
+  color: #00000000;
+}
+
+/* 目录 */
+.md-toc-content {
+  margin-left: 2em;
+  /* 修复缺失上级标题时无法递增 */
+  counter-reset: toc-h2 toc-h3 toc-h4;
+  page-break-after: always;
+}
+
+.md-toc-inner {
+  margin-left: 0 !important;
+  color: var(--text-color) !important;
+}
+
+.md-toc-item {
+  color: var(--text-color) !important;
+}
+
+/* 目录标题内容属性 */
+.md-toc-h2,
+.md-toc-h3,
+.md-toc-h4,
+.md-toc-h5,
+.md-toc-h6 {
+  font-size: var(--toc-font-size);
+  font-family: var(--toc-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
+}
+
+.md-toc-h2 {
+  font-weight: var(--strong-weight);
+}
+
+/* 目录标题前 */
+.md-toc-content .md-toc-h1 {
+  display: var(--toc-show-title);
+  counter-reset: toc-h2;
+}
+.md-toc-content .md-toc-h2 {
+  counter-reset: toc-h3;
+}
+.md-toc-content .md-toc-h3 {
+  counter-reset: toc-h4;
+}
+.md-toc-content .md-toc-h4 {
+  counter-reset: toc-h5;
+}
+.md-toc-content .md-toc-h5 {
+  counter-reset: toc-h6;
+}
+.md-toc-content .md-toc-h2:before {
+  counter-increment: toc-h2;
+  content: counter(toc-h2);
+  margin-right: 1rem;
+  font-weight: var(--strong-weight);
+}
+.md-toc-content .md-toc-h3:before {
+  counter-increment: toc-h3;
+  content: counter(toc-h2) "." counter(toc-h3);
+  margin-left: 1.5rem;
+  margin-right: 0.5rem;
+}
+.md-toc-content .md-toc-h4:before {
+  counter-increment: toc-h4;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4);
+  margin-left: 3.5rem;
+  margin-right: 0.5rem;
+}
+.md-toc-content .md-toc-h5:before {
+  counter-increment: toc-h5;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5);
+  margin-left: 5.5rem;
+  margin-right: 0.5rem;
+}
+.md-toc-content .md-toc-h6:before {
+  counter-increment: toc-h6;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6);
+  margin-left: 7.5rem;
+  margin-right: 0.5rem;
+}
+
+/* 侧边大纲标题 */
+.sidebar-content .outline-h1 {
+  counter-reset: outline-h2;
+}
+.sidebar-content .outline-h2 {
+  counter-reset: outline-h3;
+}
+.sidebar-content .outline-h2 .outline-label:before {
+  counter-increment: outline-h2;
+  content: counter(outline-h2) " ";
+}
+.sidebar-content .outline-h3 {
+  counter-reset: outline-h4;
+}
+.sidebar-content .outline-h3 .outline-label:before {
+  counter-increment: outline-h3;
+  content: counter(outline-h2) "." counter(outline-h3) "  ";
+}
+.sidebar-content .outline-h4 {
+  counter-reset: outline-h5;
+}
+.sidebar-content .outline-h4 .outline-label:before {
+  counter-increment: outline-h4;
+  content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "  ";
+}
+.sidebar-content .outline-h5 {
+  counter-reset: outline-h6;
+}
+.sidebar-content .outline-h5 .outline-label:before {
+  counter-increment: outline-h5;
+  content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) "  ";
+}
+
+.sidebar-content {
+  /* 侧边栏的字体修改 */
+  font-family: var(--ui-font);
+  list-style: none;
+}
+
+/* 元数据（如 YAML front matter）的背景框 */
+pre.md-meta-block {
+  background: #cccccc;
+  padding: 1.4em;
+  font-family: var(--code-font), var(--ui-font), monospace;
+}
+
+#write > h3.md-focus:before,
+#write > h4.md-focus:before,
+#write > h5.md-focus:before,
+#write > h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+  color: inherit;
+  border: inherit;
+  border-radius: inherit;
+  position: inherit;
+  left: initial;
+  float: none;
+  top: initial;
+  font-size: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  vertical-align: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+
+
+</style><title>计算机网络作业</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='计算机网络作业'><span>计算机网络作业</span></h1><p><strong><span>局域网的协议标准有哪些，分别对应哪些产品</span></strong></p><blockquote><p><span>局域网常用的三种通信协议分别是TCP/IP协议、NetBEUI协议和IPX/SPX协议</span></p></blockquote><p>&nbsp;</p><p><strong><span>比较分组交换和电路交换的主要优缺点</span></strong></p><blockquote><p><strong><span>分组交换</span></strong><span>：</span></p><p><strong><span>优点</span></strong><span> ：高效 灵活 迅速 可靠 </span></p><p><strong><span>缺点</span></strong><span>：分组在各路由器存储转发时需要排队，这就会造成一定的时延。此外还无法确保通信时端到端所需要的带宽 分组必须携带的控制信息也造成一定的花销。整个分组交换网还需要专门的管理和控制机制。 分组还会产生丢包等安全问题</span></p><p><strong><span>电路交换：</span></strong></p><p><strong><span>优点</span></strong><span>：</span></p><ol start='' ><li><span>由于通信线路为通信双方用户专用，数据直达，所以传输数据的时延非常小。</span></li></ol><p><span>     2.通信双方之间的物理通路一旦建立，双方可以随时通信，实时性强。</span></p><p><span>     3.双方通信时按发送顺序传送数据，不存在失序问题。</span></p><p><span>     4.电路交换既适用于传输模拟信号，也适用于传输数字信号。</span></p><p><span>5.电路交换的交换设备及控制均较简单。</span></p><p><strong><span>缺点：</span></strong><span> </span></p><ol start='' ><li><span>电路交换建立连接后，物理通路被通信双方独占，即使通信线路空闲，也不能供其他用户使用，因而信道利用率低。</span></li></ol><p><span>    2. 电路交换时，数据直达，不同类型，不同规格，不同速率的终端很难相互进行通信，也难以在通信过程中进行差错控制。</span></p><p>&nbsp;</p></blockquote><p><span>3.</span><strong><span>写出osi的七层模型和tcp/ip的四层模型</span></strong></p><p><span> Osi的七层模型 </span></p><figure><table><thead><tr><th><span>应用层</span></th></tr></thead><tbody><tr><td><span>表达层</span></td></tr><tr><td><span>会话层</span></td></tr><tr><td><span>传输层</span></td></tr><tr><td><span>网络层</span></td></tr><tr><td><span>数据链路层</span></td></tr><tr><td><span>物理层</span></td></tr></tbody></table></figure><p><span> </span></p><p><span> TCP/IP的四层模型</span></p><figure><table><thead><tr><th><span>应用层</span></th></tr></thead><tbody><tr><td><span>传输层</span></td></tr><tr><td><span>网络层</span></td></tr><tr><td><span>网络接口层</span></td></tr></tbody></table></figure><p><strong><span>4.1-17</span></strong></p><p><span> （1）发送时延为100s 传播时延为5ms</span></p><p><span> （2）发送时延为1us 传播时延为5ms</span></p><p><span> 可以得出的结论为 如果数据的长度很多且发送速率比较低则总的时延中发送时延会大于传播时延 如果数据的长度短且发送速率高，则传播时延就会大于发送时延</span></p><p>&nbsp;</p><p><strong><span>4.1-18</span></strong></p><p><span>  </span></p><figure><table><thead><tr><th><span>媒体长度</span></th><th><span>传播时延</span></th><th><span>媒体中的比特数</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td><span>1mbit/s    10gbit/s</span></td></tr><tr><td><span>0,1m</span></td><td><span>4.35*10^-10s</span></td><td><span>4.35*10</span><sup><span>[-4]</span></sup><span>  4.35</span></td></tr><tr><td><span>100m</span></td><td><span>4.35*10^-7s</span></td><td><span>0.435    4.35*10</span><sup><span>3</span></sup></td></tr><tr><td><span>100km</span></td><td><span>4.35*10^-4s</span></td><td><span>4.35</span><span>*</span><span>10^2  4.35*10^6</span></td></tr><tr><td><span>5000km</span></td><td><span>0.0217s</span></td><td><span>2.17</span><span>*</span><span>10^4  2.17*10^8</span></td></tr></tbody></table></figure><p><span> </span></p><p><span> </span></p><p><span> </span></p><p><span> </span></p></div></div>
+</body>
+</html>

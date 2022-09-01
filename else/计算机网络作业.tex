@@ -1,0 +1,173 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux8ba1ux7b97ux673aux7f51ux7edcux4f5cux4e1a}{%
+\section{计算机网络作业}\label{ux8ba1ux7b97ux673aux7f51ux7edcux4f5cux4e1a}}
+
+\textbf{局域网的协议标准有哪些，分别对应哪些产品}
+
+\begin{quote}
+局域网常用的三种通信协议分别是TCP/IP协议、NetBEUI协议和IPX/SPX协议
+\end{quote}
+
+\textbf{比较分组交换和电路交换的主要优缺点}
+
+\begin{quote}
+\textbf{分组交换}：
+
+\textbf{优点} ：高效 灵活 迅速 可靠
+
+\textbf{缺点}：分组在各路由器存储转发时需要排队，这就会造成一定的时延。此外还无法确保通信时端到端所需要的带宽
+分组必须携带的控制信息也造成一定的花销。整个分组交换网还需要专门的管理和控制机制。
+分组还会产生丢包等安全问题
+
+\textbf{电路交换：}
+
+\textbf{优点}：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  由于通信线路为通信双方用户专用，数据直达，所以传输数据的时延非常小。
+\end{enumerate}
+
+2.通信双方之间的物理通路一旦建立，双方可以随时通信，实时性强。
+
+3.双方通信时按发送顺序传送数据，不存在失序问题。
+
+4.电路交换既适用于传输模拟信号，也适用于传输数字信号。
+
+5.电路交换的交换设备及控制均较简单。
+
+\textbf{缺点：}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  电路交换建立连接后，物理通路被通信双方独占，即使通信线路空闲，也不能供其他用户使用，因而信道利用率低。
+\end{enumerate}
+
+2.
+电路交换时，数据直达，不同类型，不同规格，不同速率的终端很难相互进行通信，也难以在通信过程中进行差错控制。
+\end{quote}
+
+3.\textbf{写出osi的七层模型和tcp/ip的四层模型}
+
+Osi的七层模型
+
+\begin{longtable}[]{@{}l@{}}
+\toprule
+应用层 \\ \addlinespace
+\midrule
+\endhead
+表达层 \\ \addlinespace
+会话层 \\ \addlinespace
+传输层 \\ \addlinespace
+网络层 \\ \addlinespace
+数据链路层 \\ \addlinespace
+物理层 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+TCP/IP的四层模型
+
+\begin{longtable}[]{@{}l@{}}
+\toprule
+应用层 \\ \addlinespace
+\midrule
+\endhead
+传输层 \\ \addlinespace
+网络层 \\ \addlinespace
+网络接口层 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+\textbf{4.1-17}
+
+（1）发送时延为100s 传播时延为5ms
+
+（2）发送时延为1us 传播时延为5ms
+
+可以得出的结论为
+如果数据的长度很多且发送速率比较低则总的时延中发送时延会大于传播时延
+如果数据的长度短且发送速率高，则传播时延就会大于发送时延
+
+\textbf{4.1-18}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+媒体长度 & 传播时延 & 媒体中的比特数 \\ \addlinespace
+\midrule
+\endhead
+& & 1mbit/s 10gbit/s \\ \addlinespace
+0,1m & 4.35*10\^{}-10s & 4.35*10\textsuperscript{{[}-4{]}}
+4.35 \\ \addlinespace
+100m & 4.35*10\^{}-7s & 0.435
+4.35*10\textsuperscript{3} \\ \addlinespace
+100km & 4.35*10\^{}-4s & 4.35*10\^{}2 4.35*10\^{}6 \\ \addlinespace
+5000km & 0.0217s & 2.17*10\^{}4 2.17*10\^{}8 \\ \addlinespace
+\bottomrule
+\end{longtable}
+
+\end{document}

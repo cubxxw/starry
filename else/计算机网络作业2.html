@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>计算机网络作业</title>
+</head>
+<body><h1 id='计算机网络作业'>计算机网络作业</h1>
+<p><strong>局域网的协议标准有哪些，分别对应哪些产品</strong></p>
+<blockquote><p>局域网常用的三种通信协议分别是TCP/IP协议、NetBEUI协议和IPX/SPX协议</p>
+</blockquote>
+<p>&nbsp;</p>
+<p><strong>比较分组交换和电路交换的主要优缺点</strong></p>
+<blockquote><p><strong>分组交换</strong>：</p>
+<p><strong>优点</strong> ：高效 灵活 迅速 可靠 </p>
+<p><strong>缺点</strong>：分组在各路由器存储转发时需要排队，这就会造成一定的时延。此外还无法确保通信时端到端所需要的带宽 分组必须携带的控制信息也造成一定的花销。整个分组交换网还需要专门的管理和控制机制。 分组还会产生丢包等安全问题</p>
+<p><strong>电路交换：</strong></p>
+<p><strong>优点</strong>：</p>
+<ol start='' >
+<li>由于通信线路为通信双方用户专用，数据直达，所以传输数据的时延非常小。</li>
+
+</ol>
+<p>     2.通信双方之间的物理通路一旦建立，双方可以随时通信，实时性强。</p>
+<p>     3.双方通信时按发送顺序传送数据，不存在失序问题。</p>
+<p>     4.电路交换既适用于传输模拟信号，也适用于传输数字信号。</p>
+<p>5.电路交换的交换设备及控制均较简单。</p>
+<p><strong>缺点：</strong> </p>
+<ol start='' >
+<li>电路交换建立连接后，物理通路被通信双方独占，即使通信线路空闲，也不能供其他用户使用，因而信道利用率低。</li>
+
+</ol>
+<p>    2. 电路交换时，数据直达，不同类型，不同规格，不同速率的终端很难相互进行通信，也难以在通信过程中进行差错控制。</p>
+<p>&nbsp;</p>
+</blockquote>
+<p>3.<strong>写出osi的七层模型和tcp/ip的四层模型</strong></p>
+<p> Osi的七层模型 </p>
+<figure><table>
+<thead>
+<tr><th>应用层</th></tr></thead>
+<tbody><tr><td>表达层</td></tr><tr><td>会话层</td></tr><tr><td>传输层</td></tr><tr><td>网络层</td></tr><tr><td>数据链路层</td></tr><tr><td>物理层</td></tr></tbody>
+</table></figure>
+<p> </p>
+<p> TCP/IP的四层模型</p>
+<figure><table>
+<thead>
+<tr><th>应用层</th></tr></thead>
+<tbody><tr><td>传输层</td></tr><tr><td>网络层</td></tr><tr><td>网络接口层</td></tr></tbody>
+</table></figure>
+<p><strong>4.1-17</strong></p>
+<p> （1）发送时延为100s 传播时延为5ms</p>
+<p> （2）发送时延为1us 传播时延为5ms</p>
+<p> 可以得出的结论为 如果数据的长度很多且发送速率比较低则总的时延中发送时延会大于传播时延 如果数据的长度短且发送速率高，则传播时延就会大于发送时延</p>
+<p>&nbsp;</p>
+<p><strong>4.1-18</strong></p>
+<p>  </p>
+<figure><table>
+<thead>
+<tr><th>媒体长度</th><th>传播时延</th><th>媒体中的比特数</th></tr></thead>
+<tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>1mbit/s    10gbit/s</td></tr><tr><td>0,1m</td><td>4.35*10^-10s</td><td>4.35*10<sup>[-4]</sup>  4.35</td></tr><tr><td>100m</td><td>4.35*10^-7s</td><td>0.435    4.35*10<sup>3</sup></td></tr><tr><td>100km</td><td>4.35*10^-4s</td><td>4.35*10^2  4.35*10^6</td></tr><tr><td>5000km</td><td>0.0217s</td><td>2.17*10^4  2.17*10^8</td></tr></tbody>
+</table></figure>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+</body>
+</html>
